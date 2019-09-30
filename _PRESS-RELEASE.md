@@ -2,10 +2,10 @@ Project Name
 Build Up
 
 Heading
-Name the product in a way the reader (i.e. your target customers) will understand.
+HVAC/R product and manufacturers' representatives contact list.
 
 Sub-Heading
-Design Engineers and HVAC Contractors
+App providing a central source for design engineers and contractors who need HVAC/R product assistance with their construction projects.
 
 Summary
 Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
@@ -13,8 +13,11 @@ Give a summary of the product and the benefit. Assume the reader will not read a
 Problem
 Describe the problem your product solves.
 
+Traditionally, design engineers and contractors can only find manufacturers' representatives contact info from business cards and catalogs.
+
 Solution
 Describe how your product elegantly solves the problem.
+Provides a more efficient way of contacting manufacturers' representatives.
 
 Quote from You
 A quote from a spokesperson in your company.

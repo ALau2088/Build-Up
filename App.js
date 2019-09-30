@@ -6,8 +6,10 @@
  * @flow
  */
 
-import React from 'react';
-import Search from './components/Search.js'
+import React, {Component} from 'react';
+import Search from './components/Search.js';
+import ProductList from './components/ProductList.js';
+import products from './data/products.js'
 import {
   SafeAreaView,
   StyleSheet,
@@ -26,28 +28,36 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Text h1>HVAC Product Search</Text>
-          <View style={styles.body}>
-          <Search/>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
+// const App: () => React$Node = () => {
+
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      products: products
+    }
+  }
+  render(){
+    console.log('line41:',this.state.products)
+    return (
+      <>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaView>
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            style={styles.scrollView}>
+            <Text h1>Build-Up</Text>
+            <View style={styles.body}>
+            <Search/>
+              <View style={styles.sectionContainer}>
+                <ProductList products={this.state.products}/>
+              </View>
             </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
+          </ScrollView>
+        </SafeAreaView>
+      </>
+    );
+  }
 };
 
 const styles = StyleSheet.create({

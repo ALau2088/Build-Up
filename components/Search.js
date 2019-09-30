@@ -11,19 +11,17 @@ class Search extends Component {
 
   render(){
     return (
-      <>
         <View>
           <TextInput
             style={{height: 40}}
-            placeholer="Type here to translate!"
+            placeholder="Type here to Search!"
             onChangeText={(text) => this.setState({text})}
             value={this.state.next}
           />
-        </View>
-        <Text>
+          <Text>
           {this.state.text}
-        </Text>
-      </>
+          </Text>
+        </View>
     )
   }
 }
