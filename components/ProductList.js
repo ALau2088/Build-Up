@@ -1,14 +1,7 @@
 import React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text} from 'react-native';
+import ProductEntry from './ProductEntry.js'
 
-
-const Product = ({name}) => {
-  return (
-    <View>
-      <Text>{name}</Text>
-    </View>
-  )
-}
 
 const ProductList = (props) => {
   console.log('line13:', props)
@@ -16,7 +9,7 @@ const ProductList = (props) => {
     <SafeAreaView>
       <FlatList
         data = {props.products}
-        renderItem={({item}) => <Product name={item.productName}/>}
+        renderItem={({item}) => <ProductEntry product={item}/>}
       />
     </SafeAreaView>
   )

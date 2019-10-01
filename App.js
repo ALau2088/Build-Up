@@ -9,7 +9,8 @@
 import React, {Component} from 'react';
 import Search from './components/Search.js';
 import ProductList from './components/ProductList.js';
-import products from './data/products.js'
+// import products from './data/products.js';
+import axios from 'axios';
 import {
   SafeAreaView,
   StyleSheet,
@@ -34,9 +35,19 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      products: products
+      products: []
     }
   }
+
+  componentDidMount(){
+    axios.get('http://localhost:3000/api/products')
+    .then(res => {
+      console.log(res.data)
+      this.setState({products: res.data['products']})
+    })
+    .catch(err => console.log(err))
+  }
+
   render(){
     console.log('line41:',this.state.products)
     return (
