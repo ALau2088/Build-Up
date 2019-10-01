@@ -12,8 +12,8 @@ for (let i = 0; i < productData.length; i++) {
     if (err) {
       console.log(err)
     } else {
-      let queryStr = 'INSERT INTO contacts (name, location, email, productId) value(?, ?, ?, ?);';
-      let contact = [contactData[i]['name'], contactData[i]['location'], contactData[i]['email'],contactData[i]['productId']]
+      let queryStr = 'INSERT INTO contacts (name, location, email, phoneNumber, productId) value(?, ?, ?, ?, ?);';
+      let contact = [contactData[i]['name'], contactData[i]['location'], contactData[i]['email'],contactData[i]['phoneNumber'], contactData[i]['productId']]
       db.query(queryStr,contact, (err) => {
         if (err) {
           console.log(err)

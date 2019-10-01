@@ -20,7 +20,7 @@ connection.query('CREATE TABLE IF NOT EXISTS products (id INT NOT NULL AUTO_INCR
 })
 
 // Create contact table
-connection.query('CREATE TABLE IF NOT EXISTS contacts (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(30), location VARCHAR(50), email VARCHAR(30), productId INT, FOREIGN KEY (productId) REFERENCES products(id) ON DELETE CASCADE, PRIMARY KEY(id))', function(error, results, fields) {
+connection.query('CREATE TABLE IF NOT EXISTS contacts (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(30), location VARCHAR(50), email VARCHAR(30), phoneNumber VARCHAR(20), productId INT, FOREIGN KEY (productId) REFERENCES products(id) ON DELETE CASCADE, PRIMARY KEY(id))', function(error, results, fields) {
   if (error) throw error;
 })
 
