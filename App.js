@@ -37,6 +37,7 @@ class App extends Component {
     this.state = {
       products: []
     }
+    this.onChange = this.onChange.bind(this)
   }
 
   componentDidMount(){
@@ -46,6 +47,25 @@ class App extends Component {
       this.setState({products: res.data['products']})
     })
     .catch(err => console.log(err))
+  }
+
+  onChange(search){
+    axios.get('http://localhost:3000/api/products')
+    .then(res => {
+      console.log(res.data)
+      const products = res.data['products'].filter (product => product.productName === search)
+      this.setState({products})
+    })
+    .catch(err => console.log(err))
+
+    if (search === ''){
+      axios.get('http://localhost:3000/api/products')
+    .then(res => {
+      console.log(res.data)
+      this.setState({products: res.data['products']})
+    })
+    .catch(err => console.log(err))
+    }
   }
 
   render(){
@@ -59,7 +79,7 @@ class App extends Component {
             style={styles.scrollView}>
             <Text h1>Build-Up</Text>
             <View style={styles.body}>
-            <Search/>
+            <Search onChange={this.onChange}/>
               <View style={styles.sectionContainer}>
                 <ProductList products={this.state.products}/>
               </View>

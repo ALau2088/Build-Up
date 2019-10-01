@@ -15,7 +15,9 @@ class Search extends Component {
           <TextInput
             style={{height: 40}}
             placeholder="Type here to Search!"
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={(text) => {
+              this.setState({text}, () => this.props.onChange(this.state.text));
+            }}
             value={this.state.next}
           />
           <Text>

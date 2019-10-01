@@ -5,6 +5,7 @@ const app = express();
 
 const PORT = 3000;
 
+// Get products
 app.get('/api/products', (req, res) => {
   const result = {};
   db.query('SELECT * FROM products', (err, results) => {
@@ -23,5 +24,7 @@ app.get('/api/products', (req, res) => {
     }
   })
 })
+
+// Get contacts
 
 app.listen(PORT,()=> console.log(`Listening on port ${PORT}`))
