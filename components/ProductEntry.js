@@ -60,13 +60,14 @@ class ProductEntry extends Component {
             </View>
           </View>
         </Modal>
-
+        <View style={styles.button}>         
         <Button
           onPress={() => {
             this.setModalVisible(true);
           }}
           title="Contact Rep"
         />
+        </View>
         {/*Form Modal*/}
         <Modal
           animationType="slide"
@@ -79,24 +80,34 @@ class ProductEntry extends Component {
             <View>
               <AddRepForm/>
 
+              <View style={styles.button}> 
               <Button
                 onPress={() => {
                   this.setModalVisibleForm(!this.state.modalVisibleForm);
                 }}
                 title="Hide Modal"
               />
+              </View>
             </View>
           </View>
         </Modal>
 
-        <Button
-          onPress={() => {
-            this.setModalVisibleForm(true);
-          }}
-          title="Add Rep"
-        />
+        <View style={styles.button}>      
+          <Button
+            onPress={() => {
+              this.setModalVisibleForm(true);
+            }}
+            title="Add Rep"
+          />
+        </View>  
       </View>
     )}
 }
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: '#F5F5F5'
+  }
+})
 
 export default ProductEntry;
