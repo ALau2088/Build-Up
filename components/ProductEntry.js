@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, Image, Button, Modal, TouchableHighlight, Alert} from 'react-native';
+import axios from 'axios';
+import ContactEntry from './ContactEntry.js'
 
 class ProductEntry extends Component {
   constructor(props){
     super(props);
     this.state = {
       modalVisible:false,
+      contacts: ''
     }  
+  }
+
+  componentDidMount(){
+    axios.get('http://localhost:3000/api/products')
+    .then(res => {
+      console.log(res.data)
+      this.setState({products: res.data['products']})
+    })
+    .catch(err => console.log(err))
   }
 
   setModalVisible(visible) {
@@ -15,6 +27,7 @@ class ProductEntry extends Component {
 
   render(){
   const {product} = this.props;
+  console.log('line30', product)
     return (
 
       <View>
@@ -30,7 +43,7 @@ class ProductEntry extends Component {
             }}>
             <View style={{marginTop: 22}}>
               <View>
-                <Text>Hello World!</Text>
+                <ContactEntry productId = {product.id}/>
 
                 <Button
                   onPress={() => {

@@ -26,5 +26,15 @@ app.get('/api/products', (req, res) => {
 })
 
 // Get contacts
+app.get('/api/contacts', (req, res) => {
+  const productId = 1
+  db.query('SELECT * FROM contacts WHERE productId = ?', [productId], (err, results) => {
+    if (err) {
+      throw err
+    } else {
+      res.send(results)
+    }
+  })
+})
 
 app.listen(PORT,()=> console.log(`Listening on port ${PORT}`))
