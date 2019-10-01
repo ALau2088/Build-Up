@@ -1,9 +1,12 @@
 const express = require('express');
 const db = require('./database');
+const bodyParser = require('body-parser')
 
 const app = express();
 
 const PORT = 3000;
+
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // Get products
 app.get('/api/products', (req, res) => {
@@ -27,8 +30,7 @@ app.get('/api/products', (req, res) => {
 
 // Get contacts
 app.get('/api/contacts', (req, res) => {
-  const productId = 1
-  db.query('SELECT * FROM contacts WHERE productId = ?', [productId], (err, results) => {
+  db.query('SELECT * FROM contacts WHERE productId = ?', [req.query.id], (err, results) => {
     if (err) {
       throw err
     } else {

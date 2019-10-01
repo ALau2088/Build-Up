@@ -6,9 +6,24 @@ import axios from 'axios';
 class ContactEntry extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      contacts: []
+    }
   }
   componentDidMount(){
     console.log('line 11',this.props)
+    axios.get('http://localhost:3000/api/contacts', { 
+      params: {
+        id: this.props.productId
+      }
+    }) 
+    .then(res => {
+      this.setState({contacts: res.data})
+      console.log('line18', res.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
   }
 
   call = () => {
@@ -19,14 +34,16 @@ class ContactEntry extends Component {
     call(args).catch(console.error);
   }
   render() {
-    console.log('line 19', this.props)
-    // const {contact}
+    console.log('line 37', this.state.contacts[0])
     return (
       <SafeAreaView>
       <View style={StyleSheet.container}>
         
         <Button title="Make a call" onPress={this.call}/>
-        <Text>{this.props.productId}</Text>
+        <Text>Contact Name: John Doe</Text>
+        <Text>Location: San Francisco, CA</Text>
+        <Text>email: jWick@gmail.com</Text>
+        <Text>phoneNumber: 555-555-5555</Text>
       </View>
       </SafeAreaView>
     );
